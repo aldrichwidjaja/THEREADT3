@@ -28,7 +28,7 @@ class IngredientsView extends StatelessWidget {
       // Add spacing between the lines:
       children.add(
         new SizedBox(
-          height: 5.0,
+          height: 10.0,
         ),
       );
     });

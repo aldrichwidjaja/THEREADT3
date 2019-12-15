@@ -92,7 +92,7 @@ class RecipeBook extends State<recipebookstate> {
   TabBarView _buildTabsContent() {
     Padding _buildRecipes({RecipeType recipeType, List<String> ids}) {
       CollectionReference collectionReference =
-      Firestore.instance.collection('recipes');
+      Firestore.instance.collection('trending');
       Stream<QuerySnapshot> stream;
       // The argument recipeType is set
         // Use snapshots of all recipes if recipeType has not been passed

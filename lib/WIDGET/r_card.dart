@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/WIDGET/recipe_detail.dart';
 
-import 'package:flutter_app/WIDGET/recipe_title.dart';
-import 'package:flutter_app/WIDGET/recipe_image.dart';
+import 'package:flutter_app/WIDGET/r_title.dart';
+import 'package:flutter_app/WIDGET/r_image.dart';
 import 'package:flutter_app/recipe.dart';
 
 class RecipeCard extends StatelessWidget {
@@ -32,6 +32,9 @@ class RecipeCard extends StatelessWidget {
       );
     }
 
+
+
+
     return GestureDetector(
       onTap: () => Navigator.push(
         context,
@@ -39,8 +42,8 @@ class RecipeCard extends StatelessWidget {
           builder: (context) => new DetailScreen(recipe, inFavorites),
         ),
       ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+      child: Container(
+        padding: const EdgeInsets.all(10.0),
         child: Card(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -56,7 +59,7 @@ class RecipeCard extends StatelessWidget {
                   ),
                 ],
               ),
-              RecipeTitle(recipe, 15),
+              RecipeTitle(recipe, 0),
             ],
           ),
         ),

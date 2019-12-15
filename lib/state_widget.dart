@@ -57,6 +57,22 @@ class _StateWidgetState extends State<StateWidget> {
     }
   }
 
+  Future<List<String>> getFavorites() async {
+    DocumentSnapshot querySnapshot = await Firestore.instance
+        .collection('users')
+        .document(state.user.uid)
+        .get();
+    print(state.user.uid);
+    if (querySnapshot.exists &&
+        querySnapshot.data.containsKey('favorites') &&
+        querySnapshot.data['favorites'] is List) {
+      // Create a new List<String> from List<dynamic>
+      return List<String>.from(querySnapshot.data['favorites']);
+
+    }
+    return [];
+  }
+
   Future<Null> signInWithGoogle() async {
     if (googleAccount == null) {
       // Start the sign-in process:
@@ -67,24 +83,10 @@ class _StateWidgetState extends State<StateWidget> {
     List<String> favorites = await getFavorites(); // new
     setState(() {
       state.isLoading = false;
-      state.user = firebaseUser;
       state.favorites = favorites; // new
     });
   }
 
-  Future<List<String>> getFavorites() async {
-    DocumentSnapshot querySnapshot = await Firestore.instance
-        .collection('users')
-        .document(state.user.uid)
-        .get();
-    if (querySnapshot.exists &&
-        querySnapshot.data.containsKey('favorites') &&
-        querySnapshot.data['favorites'] is List) {
-      // Create a new List<String> from List<dynamic>
-      return List<String>.from(querySnapshot.data['favorites']);
-    }
-    return [];
-  }
 
 
   Future<Null> signOutOfGoogle() async {
