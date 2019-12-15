@@ -1,10 +1,4 @@
 import 'package:flutter/material.dart';
-import 'MENUDETAIL/MENU1.dart';
-import 'MENUDETAIL/MENU2.dart';
-import 'MENUDETAIL/MENU3.dart';
-import 'MENUDETAIL/MENU4.dart';
-import 'MENUDETAIL/MENU5.dart';
-import 'MENUDETAIL/MENU6.dart';
 
 class Recipe_listfull extends StatefulWidget {
   @override
@@ -17,37 +11,37 @@ class _Recipe_listoState extends State<Recipe_listfull> {
       "name":"Premium Beef With Blueberry Sauce",
       "picture":"assets/images/tacoso.jpg",
       "chef":"El Franco Davinco",
-      "link":MENU1()
+      "link":null()
     },
     {
       "name":"Cake of the Royale",
       "picture":"assets/images/NUDEL.jpg",
       "chef":"NUDELSO",
-      "link":MENU2()
+      "link":null()
     },
     {
       "name":"Mix Potato With Lemon",
       "picture":"assets/images/PUTATO.jpg",
       "chef":"MAKSLO",
-      "link":MENU3()
+      "link":null()
     },
     {
       "name":"5 Elements of Sushi",
       "picture":"assets/images/SUZY.jpg",
       "chef":"MAKSLO",
-      "link":MENU4()
+      "link":null()
     },
     {
       "name":"Premium Wine Beef",
       "picture":"assets/images/BEFO.jpg",
       "chef":"MAKSLO",
-      "link":MENU5()
+      "link":null()
     },
     {
       "name":"Rocks Of The Ocean",
       "picture":"assets/images/KANTONO.jpg",
       "chef":"MAKSLO",
-      "link":MENU6()
+      "link":null()
     }
   ];
   @override

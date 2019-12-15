@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/MENUDETAIL/MENU1.dart';
-
 List<Recipe> RecipeList = [
   Recipe(name: "5 Elements of Sushi ",
       image: "https://firebasestorage.googleapis.com/v0/b/la-cuisinere.appspot.com/o/image_1.jpg?alt=media&token=4b8c9942-4e52-41f7-95cb-fb39e64a9b3f",
@@ -35,7 +33,7 @@ class _TrendState extends State<Trend> {
                     onTap:(){
                       Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => MENU1()));
+                          MaterialPageRoute(builder: (context) => null()));
                     },
                     child: Container(
                     width: 180,

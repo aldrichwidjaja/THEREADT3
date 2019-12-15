@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/MENUDETAIL/MENU1.dart';
 
 class Recipe{
   final String name;
@@ -43,7 +42,7 @@ class _Recipe_listoState extends State<Recipe_listo> {
                   onTap:(){
             Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MENU1()));
+            MaterialPageRoute(builder: (context) => null()));
             },
               child: Container(
                     width: 180,
