@@ -43,7 +43,7 @@ class RecipeCard extends StatelessWidget {
         ),
       ),
       child: Container(
-        padding: const EdgeInsets.all(10.0),
+        height: 20,
         child: Card(
           child: Column(
             mainAxisSize: MainAxisSize.min,

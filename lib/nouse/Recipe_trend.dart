@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/WIDGET/r_image.dart';
 import 'package:flutter_app/WIDGET/r_title.dart';
 import 'package:flutter_app/recipe.dart';
-import 'package:flutter_app/WIDGET/recipe_detail.dart';
 
+import 'WIDGET/recipe_detail.dart';
 
-class Recipe_listo extends StatelessWidget {
+class Trend extends StatelessWidget {
   final Recipe recipe;
   final bool inFavorites;
   final Function onFavoriteButtonPressed;
 
-  const Recipe_listo({
+  const Trend({
     @required this.recipe,
     @required this.inFavorites,
-    @required this.onFavoriteButtonPressed});
+    @required this.onFavoriteButtonPressed
+  }) ;
 
 
   @override
@@ -32,19 +33,20 @@ class Recipe_listo extends StatelessWidget {
         shape: CircleBorder(),
       );
     }
-            return Padding(
-              padding: const EdgeInsets.all(6.0),
+
+    return Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Stack(
                 children: <Widget>[
-                  InkWell(
-                  onTap:(){
-            Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) =>  new DetailScreen(recipe, inFavorites)));
-            },
-              child: Container(
+                  GestureDetector(
+                    onTap:(){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => new DetailScreen(recipe, inFavorites)));
+                    },
+                    child: Container(
                     width: 180,
-                    height: 162,
+                      height: 162,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5),
@@ -57,24 +59,23 @@ class Recipe_listo extends StatelessWidget {
                         ]),
                     child: Column(
                       children: <Widget>[
-                    Stack(
-                    children: <Widget>[
-                        RecipeImage(recipe.imageURL),
-                Positioned(
-                  child: _buildFavoriteButton(),
-                  top: 2.0,
-                  right: 2.0,
-                ),
+                        Stack(
+                          children: <Widget>[
+                            RecipeImage(recipe.imageURL),
+                            Positioned(
+                              child: _buildFavoriteButton(),
+                              top: 2.0,
+                              right: 2.0,
+                            ),
+                          ],
+                        ),
+                        RecipeTitle(recipe,5),
+                      ],
+                    ),
+                  ),
+            )
                 ],
               ),
-              RecipeTitle(recipe,5),
-             ] ,
-            ),
-              ),
-            )
-            ]
-              )
             );
-          }
+  }
 }
-

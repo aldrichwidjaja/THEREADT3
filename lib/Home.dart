@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Recipe_listo.dart';
 import 'package:flutter_app/State.dart';
-import 'package:flutter_app/WIDGET/r_card.dart';
 import 'package:flutter_app/recipe.dart';
 import 'package:flutter_app/state_widget.dart';
 import 'package:flutter_app/util/store.dart';
-//import 'package:flutter_app/recipe_listfull.dart';
-import 'RecipeBook.dart';
 import 'carousel_banner.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -29,12 +27,13 @@ class _HomePage extends State<MyHomePage> {
   @override
   Widget build(BuildContext context, {RecipeType recipeType, List<String> ids}) {
     appState = StateWidget.of(context).state;
-    CollectionReference collectionReference =
-    Firestore.instance.collection('trending');
-    Stream<QuerySnapshot> stream;
+    CollectionReference collectionReference = Firestore.instance.collection('trending');
+    CollectionReference col2 = Firestore.instance.collection('rekomen');
+    Stream<QuerySnapshot> stream,stream2;
     // The argument recipeType is set
     // Use snapshots of all recipes if recipeType has not been passed
     stream = collectionReference.snapshots();
+    stream2 = col2.snapshots();
 
     return new SingleChildScrollView(
       child: Column(
@@ -50,14 +49,14 @@ class _HomePage extends State<MyHomePage> {
                   ),
           ),
           Container(
-            height: 200,
+            height: 180,
             // Padding before and after the list view:
             padding: const EdgeInsets.symmetric(vertical: 1.0),
             child: Row(
               children: <Widget>[
                 Expanded(
                   child: new StreamBuilder(
-                    stream: stream,
+                    stream: stream2,
                     builder: (BuildContext context,
                         AsyncSnapshot<QuerySnapshot> snapshot) {
                       if (!snapshot.hasData) return CircularProgressIndicator();
@@ -68,7 +67,7 @@ class _HomePage extends State<MyHomePage> {
                         // Check if the argument ids contains document ID if ids has been passed:
                             .where((d) => ids == null || ids.contains(d.documentID))
                             .map((document) {
-                          return new RecipeCard(
+                          return new Recipe_listo(
                             recipe:
                             Recipe.fromMap(document.data, document.documentID),
                               inFavorites:
@@ -92,7 +91,7 @@ class _HomePage extends State<MyHomePage> {
             ),
           ),
           Container(
-            height: 200,
+            height: 180,
             // Padding before and after the list view:
             padding: const EdgeInsets.symmetric(vertical: 1.0),
             child: Row(
@@ -110,7 +109,7 @@ class _HomePage extends State<MyHomePage> {
                         // Check if the argument ids contains document ID if ids has been passed:
                             .where((d) => ids == null || ids.contains(d.documentID))
                             .map((document) {
-                          return new RecipeCard(
+                          return new Recipe_listo(
                             recipe:
                             Recipe.fromMap(document.data, document.documentID),
                             inFavorites:

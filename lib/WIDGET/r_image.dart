@@ -8,7 +8,7 @@ class RecipeImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 130,
+      height: 120,
       width: 200,
       child: Image.network(
         imageURL,

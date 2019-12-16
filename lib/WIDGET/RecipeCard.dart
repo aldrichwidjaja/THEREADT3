@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/WIDGET/recipe_detail.dart';
-
 import 'package:flutter_app/WIDGET/recipe_title.dart';
 import 'package:flutter_app/WIDGET/recipe_image.dart';
 import 'package:flutter_app/recipe.dart';
