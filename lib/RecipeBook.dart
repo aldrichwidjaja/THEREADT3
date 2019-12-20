@@ -1,14 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Home.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-
 import 'package:flutter_app/recipe.dart';
 import 'package:flutter_app/util/store.dart';
 import 'package:flutter_app/WIDGET/RecipeCard.dart';
 import 'package:flutter_app/State.dart';
 import 'package:flutter_app/state_widget.dart';
 import 'package:flutter_app/login.dart';
+import 'package:flutter_app/WIDGET/video_button.dart';
 
 import 'WIDGET/setting_button.dart';
 
@@ -25,7 +24,7 @@ class RecipeBook extends State<recipebookstate> {
     const double _iconSize = 20.0;
 
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child:
       Scaffold(
         appBar:
@@ -38,6 +37,7 @@ class RecipeBook extends State<recipebookstate> {
             tabs: [
               Tab(icon: Icon(Icons.trending_up, size: _iconSize)),
               Tab(icon: Icon(Icons.restaurant, size: _iconSize)),
+              Tab(icon: Icon(Icons.videocam, size: _iconSize)),
               Tab(icon: Icon(Icons.settings, size: _iconSize)),
             ],
         ),),
@@ -73,6 +73,7 @@ class RecipeBook extends State<recipebookstate> {
     );
   }
 
+
   Column _buildSettings() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,7 +93,7 @@ class RecipeBook extends State<recipebookstate> {
   TabBarView _buildTabsContent() {
     Padding _buildRecipes({RecipeType recipeType, List<String> ids}) {
       CollectionReference collectionReference =
-      Firestore.instance.collection('trending');
+      Firestore.instance.collection('trending');//there is error in recipes db
       Stream<QuerySnapshot> stream;
       // The argument recipeType is set
         // Use snapshots of all recipes if recipeType has not been passed
@@ -136,6 +137,7 @@ class RecipeBook extends State<recipebookstate> {
       children: [
         MyHomePage(),
         _buildRecipes(recipeType: RecipeType.food),
+        VideoPlayerScreen(),
         _buildSettings(),
       ],
     );
