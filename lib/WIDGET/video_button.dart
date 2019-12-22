@@ -5,25 +5,29 @@ import 'package:video_player/video_player.dart';
 
 
 class VideoPlayerScreen extends StatefulWidget {
-  VideoPlayerScreen({Key key}) : super(key: key);
+  final String videoURL;
+
+  const VideoPlayerScreen({Key key, this.videoURL}) : super(key: key);
 
   @override
-  _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
+  _VideoPlayerScreenState createState() => _VideoPlayerScreenState(videoURL);
 }
 
 class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
+  final String videoURL;
+
   VideoPlayerController _controller;
   Future<void> _initializeVideoPlayerFuture;
+
+  _VideoPlayerScreenState(this.videoURL);
 
   @override
   void initState() {
     // Create and store the VideoPlayerController. The VideoPlayerController
     // offers several different constructors to play videos from assets, files,
     // or the internet.
-    _controller = VideoPlayerController.network(
-        'https://firebasestorage.googleapis.com/v0/b/cuisinere-da36a.appspot.com/o/Confetti%20-%20Ghost.mp4?alt=media&token=7f4abeed-c7de-4fdd-9072-381a762040c1'
+    _controller = VideoPlayerController.network(videoURL
     );
-
     // Initialize the controller and store the Future for later use.
     _initializeVideoPlayerFuture = _controller.initialize();
 

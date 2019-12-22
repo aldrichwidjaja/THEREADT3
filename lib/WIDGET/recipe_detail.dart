@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/WIDGET/video_button.dart';
 
 import 'package:flutter_app/recipe.dart';
 import 'package:flutter_app/WIDGET/recipe_title.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_app/State.dart';
 import 'package:flutter_app/state_widget.dart';
 import 'package:flutter_app/util/store.dart';
 import 'package:flutter_app/WIDGET/recipe_image.dart';
+import 'package:video_player/video_player.dart';
 
 class IngredientsView extends StatelessWidget {
   final List<String> ingredients;
@@ -32,10 +34,12 @@ class IngredientsView extends StatelessWidget {
         ),
       );
     });
+
     return ListView(
       padding: EdgeInsets.fromLTRB(25.0, 25.0, 25.0, 75.0),
-      children: children,
+      children: children
     );
+
   }
 }
 
@@ -86,7 +90,7 @@ class _DetailScreenState extends State<DetailScreen>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(vsync: this, length: 2);
+    _tabController = TabController(vsync: this, length: 3);
     _scrollController = ScrollController();
     _inFavorites = widget.inFavorites;
   }
@@ -138,6 +142,7 @@ class _DetailScreenState extends State<DetailScreen>
                 tabs: <Widget>[
                   Tab(text: "Home", ),
                   Tab(text: "Preparation"),
+                  Tab(text: "Video")
                 ],
                 controller: _tabController,
               ),
@@ -148,6 +153,7 @@ class _DetailScreenState extends State<DetailScreen>
           children: <Widget>[
             IngredientsView(widget.recipe.ingredients),
             PreparationView(widget.recipe.preparation),
+            VideoPlayerScreen(videoURL: widget.recipe.videoURL)
           ],
           controller: _tabController,
         ),

@@ -3,7 +3,6 @@ import 'package:flutter_app/WIDGET/r_image.dart';
 import 'package:flutter_app/WIDGET/r_title.dart';
 import 'package:flutter_app/recipe.dart';
 
-import 'WIDGET/recipe_detail.dart';
 
 class Trend extends StatelessWidget {
   final Recipe recipe;
@@ -40,9 +39,6 @@ class Trend extends StatelessWidget {
                 children: <Widget>[
                   GestureDetector(
                     onTap:(){
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => new DetailScreen(recipe, inFavorites)));
                     },
                     child: Container(
                     width: 180,

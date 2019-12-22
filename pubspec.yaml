@@ -27,6 +27,7 @@ dependencies:
   cloud_firestore: ^0.8.2+3
   google_sign_in: ^3.2.2
   firebase_auth: ^0.6.2+1
+  video_player:
 
 dev_dependencies:
   flutter_test:
